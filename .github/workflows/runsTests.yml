@@ -1,4 +1,4 @@
-name: First Action
+name: Action to run tests
 
 on:
   push:
