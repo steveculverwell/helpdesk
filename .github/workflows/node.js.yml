@@ -13,5 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: hello world
-        run: npm test
+        run: |
+          npm ci
+          npm test
         
