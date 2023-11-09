@@ -11,6 +11,7 @@ export default function Navbar() {
         width={70}
         quality={100}
         placeholder='blur'
+        priority={true}
       />
 
     <h1>Helpdesk</h1>
