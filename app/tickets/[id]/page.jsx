@@ -1,3 +1,5 @@
+export const dynamicParams = false;
+
 export async function getStaticParams() {
     const res = await fetch('http://localhost:4000/tickets/')
     const tickets = await res.json()
