@@ -1,5 +1,9 @@
-export const dynamicParams = false;
+import { notFound } from "next/navigation";
 
+// what to do when page hasn't been pre rendered
+export const dynamicParams = true;
+
+// function to run ahead and get ids to build static pages and routes
 export async function getStaticParams() {
     const res = await fetch('http://localhost:4000/tickets/')
     const tickets = await res.json()
@@ -13,9 +17,16 @@ export async function getStaticParams() {
 async function getTicket(id) {
     const res = await fetch('http://localhost:4000/tickets/' + id, {
         next: {
+            // dont set this to 0 if you are using static params
             revalidate: 60 // use 0 to opt out of using cache
         }
 })
+
+// if not ok then manually serve 404
+// notFound() serves it up
+if (!res.ok) {
+    notFound();
+}
 
 return res.json()
 }  
